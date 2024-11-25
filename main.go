@@ -78,6 +78,28 @@ func deleteTask(id int) {
 	fmt.Println("Task deleted successfully!")
 }
 
+// Function to update a task by ID
+func updateTask(id int, newDescription string, newPriority int) {
+	for i, task := range tasks {
+		if task.ID == id {
+			if newDescription != "" {
+				tasks[i].Description = newDescription
+			}
+			if newPriority >= 1 && newPriority <= 3 {
+				tasks[i].Priority = newPriority
+			} else {
+				fmt.Println("Error: Priority must be between 1 (High) and 3 (Low).")
+				return
+			}
+			fmt.Println("Task updated successfully!")
+			return
+		}
+	}
+
+	fmt.Println("Error: Task not found.")
+}
+
+
 
 
 
