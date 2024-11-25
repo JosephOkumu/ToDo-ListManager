@@ -39,6 +39,27 @@ func addTask(description string, priority int) {
 	fmt.Println("Task added successfully!")
 }
 
+// Function to view tasks sorted by priority
+func viewTasks() {
+	if len(tasks) == 0 {
+		fmt.Println("No tasks to display.")
+		return
+	}
+
+	// Sort tasks by priority (High to Low)
+	sort.Slice(tasks, func(i, j int) bool {
+		return tasks[i].Priority < tasks[j].Priority
+	})
+
+	fmt.Println("\nTasks:")
+	for _, task := range tasks {
+		fmt.Printf("ID: %d, Description: %s, Priority: %d\n", task.ID, task.Description, task.Priority)
+	}
+	fmt.Println()
+}
+
+
+
 
 
 
