@@ -58,6 +58,25 @@ func viewTasks() {
 	fmt.Println()
 }
 
+// Function to delete a task by ID
+func deleteTask(id int) {
+	index := -1
+	for i, task := range tasks {
+		if task.ID == id {
+			index = i
+			break
+		}
+	}
+
+	if index == -1 {
+		fmt.Println("Error: Task not found.")
+		return
+	}
+
+	// Remove task from slice
+	tasks = append(tasks[:index], tasks[index+1:]...)
+	fmt.Println("Task deleted successfully!")
+}
 
 
 
