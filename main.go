@@ -99,7 +99,59 @@ func updateTask(id int, newDescription string, newPriority int) {
 	fmt.Println("Error: Task not found.")
 }
 
+// Function to display menu and handle user input
+func showMenu() {
+	for {
+		fmt.Println("\nTo-Do List Manager")
+		fmt.Println("1. Add Task")
+		fmt.Println("2. View Tasks")
+		fmt.Println("3. Delete Task")
+		fmt.Println("4. Update Task")
+		fmt.Println("5. Exit")
+		fmt.Print("Enter your choice: ")
 
+		var choice int
+		fmt.Scan(&choice)
+
+		switch choice {
+		case 1:
+			var description string
+			var priority int
+			fmt.Print("Enter task description: ")
+			fmt.Scanln(&description)
+			fmt.Print("Enter task priority (1 = High, 2 = Medium, 3 = Low): ")
+			fmt.Scan(&priority)
+			addTask(description, priority)
+		case 2:
+			viewTasks()
+		case 3:
+			var id int
+			fmt.Print("Enter task ID to delete: ")
+			fmt.Scan(&id)
+			deleteTask(id)
+		case 4:
+			var id int
+			var newDescription string
+			var newPriority int
+			fmt.Print("Enter task ID to update: ")
+			fmt.Scan(&id)
+			fmt.Print("Enter new task description (leave empty to keep unchanged): ")
+			fmt.Scanln(&newDescription)
+			fmt.Print("Enter new priority (1 = High, 2 = Medium, 3 = Low, or 0 to keep unchanged): ")
+			fmt.Scan(&newPriority)
+			updateTask(id, newDescription, newPriority)
+		case 5:
+			fmt.Println("Exiting program. Goodbye!")
+			return
+		default:
+			fmt.Println("Invalid choice. Please try again.")
+		}
+	}
+}
+
+func main() {
+	showMenu()
+}
 
 
 
